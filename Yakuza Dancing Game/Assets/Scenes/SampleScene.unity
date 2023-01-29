@@ -1795,6 +1795,7 @@ MonoBehaviour:
   _actionPrefab: {fileID: 3616190852548798431, guid: f75f3512fd3b3cf42aff81003fc5a07f,
     type: 3}
   _player: {fileID: 1469024742}
+  _stepScoreModifier: 0.05
   _actionTiles: []
 --- !u!4 &622826506
 Transform:
@@ -3525,6 +3526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcaa60860c332d4abda7a0fe5d10f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CountSteps: 1
   _currentTile: {fileID: 212712122}
 --- !u!114 &1469024746
 MonoBehaviour:

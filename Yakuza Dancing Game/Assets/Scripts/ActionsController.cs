@@ -9,6 +9,7 @@ public class ActionsController : MonoBehaviour
     [SerializeField] Transform _actionsParent;
     [SerializeField] GameObject _actionPrefab;
     [SerializeField] Transform _player;
+    [SerializeField] float _stepScoreModifier;
 
     private Coroutine _spawnCoroutine;
     private bool _continue;
@@ -77,7 +78,17 @@ public class ActionsController : MonoBehaviour
             {
                 if (actionTile.transform.position == _player.position)
                 {
-                    Debug.Log("Action success");
+                    Player player = _player.gameObject.GetComponent<Player>();
+                    int scoreToAdd = actionTile.FinishSuccess();    // Finish this action and get score
+
+                    // Modifie score based on number of steps
+                    int steps = player.GetTileSteps();
+                    float modifier = (float)steps * _stepScoreModifier;
+                    int finalScore = (int)(scoreToAdd * (modifier + 1.0f));
+
+                    player.ClearTileSteps();
+
+                    Debug.Log("+" + finalScore + " points");
                     break;
                 }
             }
