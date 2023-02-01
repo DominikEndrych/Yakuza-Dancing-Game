@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     public bool CountSteps;
 
+    [SerializeField] int _maxSteps;         // Max steps player can do for one action
     [SerializeField] Tile _currentTile;
 
     private List<Tile> _currentSteppedTiles;
@@ -57,28 +58,35 @@ public class Player : MonoBehaviour
     {
         if(newTile)
         {
-            transform.position = newTile.transform.position;
-            _currentTile = newTile;
-
             // Add tile to steps list
             if(CountSteps)
             {
-                AddTileStep(newTile);
-            }   
+                AddTileStep(_currentTile);
+            }
+
+            transform.position = newTile.transform.position;
+            _currentTile = newTile;
         }
     }
     #endregion
 
     public void ClearTileSteps()
     {
-        _currentSteppedTiles.Clear();
+        // Hide counters of all stepped tiles
+        foreach(Tile tile in _currentSteppedTiles)
+        {
+            tile.HideCounter();
+        }
+        
+        _currentSteppedTiles.Clear();       // Clear stepped tiles
     }
 
     public int GetTileSteps()
     {
-        return _currentSteppedTiles.Count;
-    }
+        if(_currentSteppedTiles.Count > _maxSteps) { return _maxSteps; }
+        else return _currentSteppedTiles.Count;
 
+    }
 
     private void AddTileStep(Tile tile)
     {
@@ -86,6 +94,7 @@ public class Player : MonoBehaviour
         if(!_currentSteppedTiles.Contains(tile))
         {
             _currentSteppedTiles.Add(tile);
+            tile.RevealCounter(GetTileSteps());
         }
     }
 

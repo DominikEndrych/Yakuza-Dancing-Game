@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class ActionsController : MonoBehaviour
 {
+    [SerializeField] float _spawnInterval;
     [SerializeField] List<Tile> _availableTiles;
     [SerializeField] Transform _actionsParent;
     [SerializeField] GameObject _actionPrefab;
@@ -57,7 +58,7 @@ public class ActionsController : MonoBehaviour
 
             _actionTiles.Add(actionTileObj.GetComponent<ActionTile>());
 
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(_spawnInterval);
         }
     }
 
@@ -66,7 +67,8 @@ public class ActionsController : MonoBehaviour
     {
         _availableTiles.Add(actionTile.Tile);
         _actionTiles.Remove(actionTile);
-        Destroy(actionTile.gameObject);
+        _player.GetComponent<Player>().ClearTileSteps();
+        //Destroy(actionTile.gameObject);
     }
 
     public void Action1(InputAction.CallbackContext context)
@@ -79,16 +81,21 @@ public class ActionsController : MonoBehaviour
                 if (actionTile.transform.position == _player.position)
                 {
                     Player player = _player.gameObject.GetComponent<Player>();
-                    int scoreToAdd = actionTile.FinishSuccess();    // Finish this action and get score
-
-                    // Modifie score based on number of steps
                     int steps = player.GetTileSteps();
-                    float modifier = (float)steps * _stepScoreModifier;
-                    int finalScore = (int)(scoreToAdd * (modifier + 1.0f));
+                    int scoreToAdd = actionTile.GetScore();
+
+                    if (scoreToAdd > 0)
+                    {
+                        actionTile.Finish(true, steps);    // Finish this action and get score
+
+                        // Modifie score based on number of steps
+                        float modifier = (float)steps * _stepScoreModifier;
+                        int finalScore = (int)(scoreToAdd * (modifier + 1.0f));
+                        Debug.Log("Score: " + finalScore);
+                    }
+                    else actionTile.Finish(false, steps);
 
                     player.ClearTileSteps();
-
-                    Debug.Log("+" + finalScore + " points");
                     break;
                 }
             }
