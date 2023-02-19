@@ -20,7 +20,7 @@ public class ActionsController : MonoBehaviour
     private void Start()
     {
         // TODO: Subscribe this to OnGameStart event
-        StartSpawning();
+        //StartSpawning();
     }
 
     // Start spawning
