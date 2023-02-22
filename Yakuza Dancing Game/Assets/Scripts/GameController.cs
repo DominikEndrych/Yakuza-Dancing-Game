@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     public UnityEvent OnGameStart;
     public UnityEvent OnGameplayStart;
     public UnityEvent OnLateGameplayStart;  // Invoked few seconds after OnGameplayStart
+    public UnityEvent OnCameraChange;
 
     [SerializeField] float _lateGameplayWaitTime;
 
@@ -50,6 +51,7 @@ public class GameController : MonoBehaviour
         _cameras[index].StartCamera();                  // Start new camera
         _currentCameraIndex = index;                    // Change current index of active camera
 
+        OnCameraChange.Invoke();
     }
 
     #endregion
