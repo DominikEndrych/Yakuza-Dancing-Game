@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public UnityEvent OnGameplayStart;
     public UnityEvent OnLateGameplayStart;  // Invoked few seconds after OnGameplayStart
     public UnityEvent OnCameraChange;
+    public UnityEvent OnGameplayEnd;
 
     [SerializeField] float _lateGameplayWaitTime;
 
@@ -29,6 +30,11 @@ public class GameController : MonoBehaviour
         _cameras[_currentCameraIndex].StartCamera();    // Start first camera
     }
 
+    public void EndGameplay()
+    {
+        OnGameplayEnd.Invoke();
+    }
+
     private IEnumerator StartLateGameplay()
     {
         yield return new WaitForSeconds(_lateGameplayWaitTime);
@@ -39,16 +45,22 @@ public class GameController : MonoBehaviour
     #region Cameras
     public void SwitchCamera()
     {
-        int index = _currentCameraIndex;
+        Debug.Log("Start camera switch funciton");
+        int index = Random.Range(0, _cameras.Count);
 
-        // Choose new camera
-        while(index == _currentCameraIndex)
+        // Change index if generated number was the same
+        // Method with while generated a bug so I need to do it this way
+        if (index == _currentCameraIndex)
         {
-            index = Random.Range(0, _cameras.Count);
+            if (index == _cameras.Count-1) index = index - 1;
+            else if (index == 0) index = 1;
+            else index = index + 1;
         }
 
-        _cameras[_currentCameraIndex].HideCamera();     // Hide current camera
         _cameras[index].StartCamera();                  // Start new camera
+        Debug.Log("Start new camera");
+        _cameras[_currentCameraIndex].HideCamera();     // Hide current camer
+        Debug.Log("Hide");
         _currentCameraIndex = index;                    // Change current index of active camera
 
         OnCameraChange.Invoke();

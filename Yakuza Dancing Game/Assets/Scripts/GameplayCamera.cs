@@ -31,6 +31,6 @@ public class GameplayCamera : MonoBehaviour
     public void StartCamera()
     {
         _animator.SetTrigger("Start Movement");
-        _vcam.Priority = 10;
+        _vcam.Priority = 50;
     }
 }

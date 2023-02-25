@@ -21,14 +21,20 @@ public class DancerController : MonoBehaviour
     {
         if(Random.Range(0f, 1f) <= _switchProbability)
         {
-            int triggerIdx = _currentAnimation;
-            while(triggerIdx == _currentAnimation)
+            int triggerIdx = Random.Range(0, _numberOfAnimations);
+
+            // Change index if generated number was the same
+            // Method with while generated a bug so I need to do it this way
+            if (triggerIdx == _currentAnimation)
             {
-                triggerIdx = Random.Range(0, _numberOfAnimations);      // Get random trigger
-                _animator.SetTrigger("Dance" + triggerIdx);             // Trigger new animation
-                _currentAnimation = triggerIdx;
-                Debug.Log("Animation changed to " + triggerIdx);
+                if (triggerIdx == _numberOfAnimations) triggerIdx = triggerIdx - 1;
+                else if (triggerIdx == 0) triggerIdx = 1;
+                else triggerIdx = triggerIdx + 1;
             }
+
+            _animator.SetTrigger("Dance" + triggerIdx);             // Trigger new animation
+            _currentAnimation = triggerIdx;
+            //Debug.Log("Animation changed to " + triggerIdx);
         }
     }
 }
