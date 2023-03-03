@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Gameplay Static Camera
+  m_Controller: {fileID: 9100000, guid: a272778251644444dad9e60348ff5f6f, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 053b4b837e48aec42be4cdd752343361, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4047242dcd5b7d74e86b76cf1d9456b2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ca58adf00842edc4a87f653f1db63c1d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 16c6603c2fc032b418e9c51e84bce48f, type: 2}

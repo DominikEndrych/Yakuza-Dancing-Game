@@ -18,7 +18,9 @@ public class MusicPlayer : MonoBehaviour
         {
             if(!_audioSource.isPlaying)
             {
+                Debug.Log("Music ended");
                 OnMusicEnd.Invoke();        // Invoke ending event
+                _isActive = false;
             }
         }
     }
@@ -26,5 +28,6 @@ public class MusicPlayer : MonoBehaviour
     public void StartMusic()
     {
         _audioSource.Play();
+        _isActive = true;
     }
 }

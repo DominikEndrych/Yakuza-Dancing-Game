@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class ActionsController : MonoBehaviour
 {
@@ -12,15 +13,18 @@ public class ActionsController : MonoBehaviour
     [SerializeField] Transform _player;
     [SerializeField] float _stepScoreModifier;
 
+    [Header("Score")]
+    [SerializeField] TextMeshProUGUI _scoreCounter;
+
     private Coroutine _spawnCoroutine;
     private bool _continue;
+    private int _currentScore;
 
     [SerializeField] List<ActionTile> _actionTiles;
 
     private void Start()
     {
-        // TODO: Subscribe this to OnGameStart event
-        //StartSpawning();
+        _currentScore = 0;  // Set score to 0
     }
 
     // Start spawning
@@ -31,11 +35,16 @@ public class ActionsController : MonoBehaviour
     }
 
     // Stop spawning
-    private void StopSpawning()
+    public void StopSpawning()
     {
         _continue = false;
         StopCoroutine(_spawnCoroutine);
         _spawnCoroutine = null;
+
+        foreach(ActionTile tile in _actionTiles)
+        {
+            tile.DestroyMe();
+        }
     }
 
     private Tile GetRandomAvailableTile()
@@ -91,7 +100,11 @@ public class ActionsController : MonoBehaviour
                         // Modifie score based on number of steps
                         float modifier = (float)steps * _stepScoreModifier;
                         int finalScore = (int)(scoreToAdd * (modifier + 1.0f));
-                        Debug.Log("Score: " + finalScore);
+                        //Debug.Log("Score: " + finalScore);
+
+                        // Change score
+                        _currentScore += finalScore;
+                        _scoreCounter.text = _currentScore.ToString();
                     }
                     else actionTile.Finish(false, steps);
 

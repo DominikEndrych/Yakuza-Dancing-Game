@@ -45,7 +45,7 @@ public class GameController : MonoBehaviour
     #region Cameras
     public void SwitchCamera()
     {
-        Debug.Log("Start camera switch funciton");
+        //Debug.Log("Start camera switch funciton");
         int index = Random.Range(0, _cameras.Count);
 
         // Change index if generated number was the same
@@ -58,9 +58,9 @@ public class GameController : MonoBehaviour
         }
 
         _cameras[index].StartCamera();                  // Start new camera
-        Debug.Log("Start new camera");
+        //Debug.Log("Start new camera");
         _cameras[_currentCameraIndex].HideCamera();     // Hide current camer
-        Debug.Log("Hide");
+        //Debug.Log("Hide");
         _currentCameraIndex = index;                    // Change current index of active camera
 
         OnCameraChange.Invoke();

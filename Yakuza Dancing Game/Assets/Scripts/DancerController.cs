@@ -10,11 +10,15 @@ public class DancerController : MonoBehaviour
     [SerializeField] int _numberOfAnimations;       // Number of aninations in animator
 
     private Animator _animator;
-    private int _currentAnimation = 0;
-
+    private int _currentAnimation = -1;             // Initialize current animation with number that will not be generated
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
+    }
+
+    private void Start()
+    {
+        ChangeAnimation();  // Choose random first animation
     }
 
     public void ChangeAnimation()
@@ -34,7 +38,7 @@ public class DancerController : MonoBehaviour
 
             _animator.SetTrigger("Dance" + triggerIdx);             // Trigger new animation
             _currentAnimation = triggerIdx;
-            //Debug.Log("Animation changed to " + triggerIdx);
+            Debug.Log("Animation changed to " + triggerIdx);
         }
     }
 }
