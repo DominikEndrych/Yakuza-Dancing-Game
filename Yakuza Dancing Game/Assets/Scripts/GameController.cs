@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public UnityEvent OnGameplayEnd;
 
     [SerializeField] float _lateGameplayWaitTime;
+    [SerializeField] AudioSource _musicAudioSource;
 
     [Header("Cameras")]
     [SerializeField] List<GameplayCamera> _cameras;
@@ -21,6 +22,10 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         OnGameStart.Invoke();
+        
+        // How long to wait before ending cutscene can start
+        float endingWaitTime = _musicAudioSource.clip.length - 5.87f;
+        StartCoroutine(WaitForEnding(endingWaitTime));
     }
 
     public void StartGameplay()
@@ -40,6 +45,14 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(_lateGameplayWaitTime);
 
         OnLateGameplayStart.Invoke();
+    }
+
+    // Coroutine to wait until the song is almost over
+    // This way I can start ending cutscene right at the end of the song
+    private IEnumerator WaitForEnding(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);       // Wait for certain time
+        EndGameplay();                                  // End the gameplay
     }
 
     #region Cameras
