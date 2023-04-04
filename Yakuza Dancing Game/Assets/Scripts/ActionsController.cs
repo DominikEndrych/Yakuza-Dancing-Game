@@ -16,15 +16,20 @@ public class ActionsController : MonoBehaviour
     [Header("Score")]
     [SerializeField] TextMeshProUGUI _scoreCounter;
 
+    [Header("References")]
+    [SerializeField] FeverController _feverController;
+
     private Coroutine _spawnCoroutine;
     private bool _continue;
     private int _currentScore;
+    private int _currentCombo;
 
     [SerializeField] List<ActionTile> _actionTiles;
 
     private void Start()
     {
         _currentScore = 0;  // Set score to 0
+        _currentCombo = 0;  // Set combo to 0
     }
 
     // Start spawning
@@ -41,10 +46,19 @@ public class ActionsController : MonoBehaviour
         StopCoroutine(_spawnCoroutine);
         _spawnCoroutine = null;
 
-        foreach(ActionTile tile in _actionTiles)
+        ActionTile[] allTiles = _actionsParent.GetComponentsInChildren<ActionTile>();
+        foreach(ActionTile tile in allTiles)
         {
             tile.DestroyMe();
         }
+
+        _actionTiles.Clear();   // Remove all action tiles from the list
+    }
+
+    public void AddScore(int amount)
+    {
+        _currentScore += amount;
+        _scoreCounter.text = _currentScore.ToString();
     }
 
     private Tile GetRandomAvailableTile()
@@ -103,10 +117,19 @@ public class ActionsController : MonoBehaviour
                         //Debug.Log("Score: " + finalScore);
 
                         // Change score
-                        _currentScore += finalScore;
-                        _scoreCounter.text = _currentScore.ToString();
+                        AddScore(finalScore);
+
+                        // Change combo and fever progress
+                        _currentCombo++;
+
+                        if (_currentCombo > 2) _feverController.AddFeverProgress(1);
+                        if (_currentCombo > 10) _feverController.AddFeverProgress(2);
                     }
-                    else actionTile.Finish(false, steps);
+                    else
+                    {
+                        actionTile.Finish(false, steps);
+                        _currentCombo = 0;  // Reset combo
+                    }
 
                     player.ClearTileSteps();
                     break;

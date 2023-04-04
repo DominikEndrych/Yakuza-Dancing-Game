@@ -9,6 +9,7 @@ public class ActionTile : MonoBehaviour
     public event EventHandler<ActionTile> ActionCompleted;    // Event handler for when this action is completed
     public Tile Tile;
 
+    [SerializeField] bool _destroyAfterFinish = true;
     [SerializeField] TextMeshProUGUI _finalStepsNumber;
 
     private ActionIcon _actionIcon;
@@ -45,7 +46,12 @@ public class ActionTile : MonoBehaviour
 
     private void OnActionCompleted()
     {
-        ActionCompleted.Invoke(this, gameObject.GetComponent<ActionTile>());      // Invoke ActionCompleted event
+        // Check if event has listeners
+        if(ActionCompleted != null)
+        {
+            ActionCompleted.Invoke(this, gameObject.GetComponent<ActionTile>());      // Invoke ActionCompleted event
+        }
+        
 
         // Start success finish animation
         if (_wasSuccess)
@@ -70,6 +76,9 @@ public class ActionTile : MonoBehaviour
     // This is be triggered in finish animation
     public void DestroyMe()
     {
-        Destroy(gameObject);
+        if(_destroyAfterFinish)
+        {
+            Destroy(gameObject);
+        }
     }
 }
