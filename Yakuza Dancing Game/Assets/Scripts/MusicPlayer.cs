@@ -11,6 +11,11 @@ public class MusicPlayer : MonoBehaviour
     [SerializeField] AudioSource _audioSource;
 
     private bool _isActive;
+    private void Awake()
+    {
+        _audioSource.clip = GameSettings.Instance.GetAudioClip();   // Set audio clip to play
+    }
+
     private void Update()
     {
         // Check for clip ending is something is playing

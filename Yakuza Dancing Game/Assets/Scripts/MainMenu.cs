@@ -9,4 +9,9 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");      // Load main gameplay scene
     }
+
+    public void SelectSong(AudioClip newSong)
+    {
+        GameSettings.Instance.SetAudioClip(newSong);
+    }
 }
