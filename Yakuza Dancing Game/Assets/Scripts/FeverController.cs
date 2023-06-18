@@ -10,6 +10,7 @@ public class FeverController : MonoBehaviour
     public UnityEvent OnFeverStart;
     public UnityEvent OnFeverEnd;
     public UnityEvent OnFeverSuccess;
+    public UnityEvent OnFeverDisable;
 
     [SerializeField] ProgressBar _feverProgressBar;
     [SerializeField] List<ActionTile> _feverActions;
@@ -19,9 +20,11 @@ public class FeverController : MonoBehaviour
     private bool _feverReady;
     private bool _feverActive;
     private bool _feverSuccess;
+    private bool _disabled;
 
     private void Start()
     {
+        _disabled = false;
         _feverSuccess = true;
         SetFeverReady(false);   // Fever is not ready at start
         foreach (ActionTile action in _feverActions)
@@ -36,7 +39,7 @@ public class FeverController : MonoBehaviour
         _feverReady = state;
 
         // Change animation based on new state
-        if(_feverReady)
+        if (_feverReady)
         {
             _feverProgressBar.gameObject.GetComponent<Animator>().SetTrigger("Fever Ready");
             _feverSuccess = true;
@@ -49,7 +52,7 @@ public class FeverController : MonoBehaviour
 
     public void StartFever(InputAction.CallbackContext context)
     {
-        if (context.performed && _feverReady)
+        if (context.performed && _feverReady && !_disabled)
         {
             _expectedIndex = 0;
             OnFeverStart.Invoke();
@@ -73,6 +76,12 @@ public class FeverController : MonoBehaviour
         {
             Debug.Log("Fever failed");
         }
+    }
+
+    public void DisableFever()
+    {
+        _disabled = true;
+        OnFeverDisable.Invoke();
     }
 
     public void AddFeverProgress(int amount)
@@ -108,9 +117,9 @@ public class FeverController : MonoBehaviour
     private void FeverAction(int actionIndex)
     {
         // Do something only if correct action is invoked
-        if(actionIndex == _expectedIndex)
+        if (actionIndex == _expectedIndex)
         {
-            if(_feverActions[actionIndex].GetScore() > 0)
+            if (_feverActions[actionIndex].GetScore() > 0)
             {
                 _feverActions[actionIndex].Finish(true, 0);
                 Debug.Log("Correct fever action!");
@@ -133,7 +142,7 @@ public class FeverController : MonoBehaviour
     private void TileActionCompleted(object sender, ActionTile actionTile)
     {
         //Debug.Log("Remove everything");
-        if(actionTile.GetScore() <= 0)
+        if (actionTile.GetScore() <= 0)
         {
             //Debug.Log("Add score!");
             _feverSuccess = false;
@@ -148,4 +157,5 @@ public class FeverController : MonoBehaviour
             action.ActionCompleted -= TileActionCompleted;
         }
     }
+
 }

@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     public UnityEvent OnLateGameplayStart;  // Invoked few seconds after OnGameplayStart
     public UnityEvent OnCameraChange;
     public UnityEvent OnGameplayEnd;
+    public UnityEvent OnEarlyGameplayEnd;
 
     [SerializeField] float _lateGameplayWaitTime;
     [SerializeField] AudioSource _musicAudioSource;
@@ -25,7 +26,9 @@ public class GameController : MonoBehaviour
         
         // How long to wait before ending cutscene can start
         float endingWaitTime = _musicAudioSource.clip.length - 5.87f;
+        float earlyEndWaitTime = _musicAudioSource.clip.length - (6.6f+ 6.7f);
         StartCoroutine(WaitForEnding(endingWaitTime));
+        StartCoroutine(WaitForEarlyEnding(earlyEndWaitTime));
     }
 
     public void StartGameplay()
@@ -55,8 +58,16 @@ public class GameController : MonoBehaviour
         EndGameplay();                                  // End the gameplay
     }
 
+    // Coroutine to wait until the gameplay is almost over so there are no bugs
+    // This is the way to end mainly fever so it does not interfere with ending cutscene
+    private IEnumerator WaitForEarlyEnding(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        OnEarlyGameplayEnd.Invoke();
+    }
+
     #region Cameras
-    public void SwitchCamera()
+        public void SwitchCamera()
     {
         //Debug.Log("Start camera switch funciton");
         int index = Random.Range(0, _cameras.Count);
