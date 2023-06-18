@@ -39,6 +39,7 @@ public class FeverController : MonoBehaviour
         if(_feverReady)
         {
             _feverProgressBar.gameObject.GetComponent<Animator>().SetTrigger("Fever Ready");
+            _feverSuccess = true;
         }
         else
         {
@@ -67,6 +68,10 @@ public class FeverController : MonoBehaviour
         {
             OnFeverSuccess.Invoke();
             Debug.Log("Fever success!");
+        }
+        else
+        {
+            Debug.Log("Fever failed");
         }
     }
 
@@ -128,9 +133,10 @@ public class FeverController : MonoBehaviour
     private void TileActionCompleted(object sender, ActionTile actionTile)
     {
         //Debug.Log("Remove everything");
-        if(actionTile.GetScore() > 0)
+        if(actionTile.GetScore() <= 0)
         {
-            Debug.Log("Add score!");
+            //Debug.Log("Add score!");
+            _feverSuccess = false;
         }
     }
 

@@ -49,6 +49,10 @@ public class ActionTile : MonoBehaviour
         // Check if event has listeners
         if(ActionCompleted != null)
         {
+            if(!_wasSuccess)
+            {
+                _currentScore = 0;
+            }
             ActionCompleted.Invoke(this, gameObject.GetComponent<ActionTile>());      // Invoke ActionCompleted event
         }
         
@@ -70,6 +74,8 @@ public class ActionTile : MonoBehaviour
                 _animator.SetTrigger("Finish Fail");
             }
         }
+
+        _wasSuccess = false;    // Change success state back to fals
     }
 
     // Destroy this action
