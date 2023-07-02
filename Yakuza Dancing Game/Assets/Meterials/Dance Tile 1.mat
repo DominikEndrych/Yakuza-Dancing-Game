@@ -59,7 +59,7 @@ Material:
     - _Cull: 2
     - _Cutoff: 0.5
     - _DstBlend: 0
-    - _Emission: 0.6
+    - _Emission: 0.8
     - _EnvironmentReflections: 1
     - _Frequency: 2
     - _GlossMapScale: 0
@@ -79,8 +79,8 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1: {r: 0, g: 0.9261308, b: 1, a: 0}
-    - _Color2: {r: 1, g: 0, b: 0.7651315, a: 0}
+    - _Color1: {r: 0.0027729678, g: 0.60727996, b: 0.687696, a: 0}
+    - _Color2: {r: 0.03882155, g: 0.47972342, b: 0.047140453, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
 --- !u!114 &1746272507915879745
