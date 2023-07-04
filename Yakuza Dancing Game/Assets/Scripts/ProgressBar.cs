@@ -11,7 +11,7 @@ public class ProgressBar : MonoBehaviour
     public UnityEvent OnEmpty;
 
     [SerializeField] int _maximum;
-    [SerializeField] int _current;
+    [SerializeField] float _current;
 
     [SerializeField] Image _fill;
 
@@ -23,7 +23,7 @@ public class ProgressBar : MonoBehaviour
         GetCurrentFill();
     }
 
-    public void AddFill(int amount)
+    public void AddFill(float amount)
     {
         _current += amount;
     }

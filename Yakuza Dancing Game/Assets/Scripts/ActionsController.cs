@@ -122,8 +122,10 @@ public class ActionsController : MonoBehaviour
                         // Change combo and fever progress
                         _currentCombo++;
 
-                        if (_currentCombo > 2) _feverController.AddFeverProgress(1);
-                        if (_currentCombo > 10) _feverController.AddFeverProgress(2);
+                        if (_currentCombo > 2 && _currentCombo <= 10 ) 
+                            _feverController.AddFeverProgress(1.0f);
+                        if (_currentCombo > 10) 
+                            _feverController.AddFeverProgress(1.5f);
                     }
                     else
                     {

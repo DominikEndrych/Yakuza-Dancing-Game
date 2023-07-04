@@ -6307,7 +6307,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65861450}
-  m_LocalRotation: {x: 0.25025988, y: 0.5229197, z: -0.16396165, w: 0.7981488}
+  m_LocalRotation: {x: 0.25025985, y: 0.5229198, z: -0.16396168, w: 0.7981489}
   m_LocalPosition: {x: -3.26, y: 4.15, z: -1.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -25024,7 +25024,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616898045}
-  m_LocalRotation: {x: -0.09704336, y: 0.845243, z: -0.16433279, w: -0.4991409}
+  m_LocalRotation: {x: -0.09704335, y: 0.845243, z: -0.16433278, w: -0.4991409}
   m_LocalPosition: {x: 1.48, y: 2.08, z: 0.816121}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -25464,6 +25464,50 @@ MonoBehaviour:
       - m_Target: {fileID: 126061374}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1906276950}
+        m_MethodName: set_alpha
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 792854585}
+        m_MethodName: set_alpha
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1842280120}
+        m_MethodName: set_alpha
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 979975999}
+        m_MethodName: set_alpha
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -32318,6 +32362,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 791443424}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &792854585 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 5684178727088532550, guid: f75f3512fd3b3cf42aff81003fc5a07f,
+    type: 3}
+  m_PrefabInstance: {fileID: 786033411}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &795070975
 GameObject:
   m_ObjectHideFlags: 0
@@ -36178,6 +36228,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!225 &979975999 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 5684178727088532550, guid: f75f3512fd3b3cf42aff81003fc5a07f,
+    type: 3}
+  m_PrefabInstance: {fileID: 320245606}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1005153042
 Mesh:
   m_ObjectHideFlags: 0
@@ -37365,7 +37421,7 @@ MonoBehaviour:
   OnEmpty:
     m_PersistentCalls:
       m_Calls: []
-  _maximum: 5
+  _maximum: 10
   _current: 0
   _fill: {fileID: 232542372}
 --- !u!225 &1108950377
@@ -55793,7 +55849,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1711171012}
-  m_LocalRotation: {x: 0.041363742, y: -0.84577227, z: 0.066284224, w: 0.52779233}
+  m_LocalRotation: {x: 0.04136239, y: -0.845783, z: 0.06628507, w: 0.5277751}
   m_LocalPosition: {x: 1.19, y: 1.677, z: 0.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -59763,6 +59819,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1838681655}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &1842280120 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 5684178727088532550, guid: f75f3512fd3b3cf42aff81003fc5a07f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1990674262}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1853839036
 GameObject:
   m_ObjectHideFlags: 0
@@ -60880,6 +60942,12 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!225 &1906276950 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 5684178727088532550, guid: f75f3512fd3b3cf42aff81003fc5a07f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1801978299}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1916174600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65326,17 +65394,17 @@ PrefabInstance:
     - target: {fileID: 3936377158747150740, guid: 8339e9a3a9efec64a99d0b66e3bcac47,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.17785946
+      value: 0.17785949
       objectReference: {fileID: 0}
     - target: {fileID: 3936377158747150740, guid: 8339e9a3a9efec64a99d0b66e3bcac47,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.13127407
+      value: 0.13127412
       objectReference: {fileID: 0}
     - target: {fileID: 3936377158747150740, guid: 8339e9a3a9efec64a99d0b66e3bcac47,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.023947837
+      value: -0.023947846
       objectReference: {fileID: 0}
     - target: {fileID: 3936377158747150740, guid: 8339e9a3a9efec64a99d0b66e3bcac47,
         type: 3}
@@ -68099,7 +68167,7 @@ PrefabInstance:
     - target: {fileID: 8107104252885617188, guid: 1c130bb90629fba4a972fbc7ad15ddc9,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.05924647
+      value: -0.059246473
       objectReference: {fileID: 0}
     - target: {fileID: 8107104252885617188, guid: 1c130bb90629fba4a972fbc7ad15ddc9,
         type: 3}
@@ -68114,7 +68182,7 @@ PrefabInstance:
     - target: {fileID: 8107104252885617188, guid: 1c130bb90629fba4a972fbc7ad15ddc9,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.10878057
+      value: -0.10878058
       objectReference: {fileID: 0}
     - target: {fileID: 8107104252885617189, guid: 1c130bb90629fba4a972fbc7ad15ddc9,
         type: 3}

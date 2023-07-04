@@ -84,7 +84,7 @@ public class FeverController : MonoBehaviour
         OnFeverDisable.Invoke();
     }
 
-    public void AddFeverProgress(int amount)
+    public void AddFeverProgress(float amount)
     {
         _feverProgressBar.AddFill(amount);  // Add fill to fever progress bar
     }
