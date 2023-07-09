@@ -6,6 +6,7 @@ If you ever If you ever played disco minigame from Yakuza 0, then this will be v
 First, select your song! You can choose from:
 - Friday Night (short song)
 - Mumuland (long song)
+
 Please note that I don't own any rights to these songs. All the rights belong to their respected owners.
 ### 2. Scoring points
 This is the main part of the gameplay. You can use `arrow keys` to move around the 2D dance floor. Action squares will gradually begin to appear on the dance floor. You need to step on this action square and press `E` just at the right time to complete this action and get score. But that's not all! The more steps you make before you complete the action the more points you will get. But don't taky too long or the action square will dissapear.
