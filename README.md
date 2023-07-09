@@ -1,4 +1,4 @@
-# Yakuza-Dancing-Game
+# Yakuza Disco
 Welcome to my own recreation of beloved minigame from Yakuza 0!
 ## How to play
 If you ever If you ever played disco minigame from Yakuza 0, then this will be very familiar. The gameplay features are limited right now, but all the important stuff is already implemented!
