@@ -101,8 +101,10 @@ public class ActionsController : MonoBehaviour
             // Iterate over action tiles and check if player is standing on one
             foreach (ActionTile actionTile in _actionTiles)
             {
-                if (actionTile.transform.position == _player.position)
+                //if (actionTile.transform.position == _player.position)
+                if(actionTile.Tile == _player.gameObject.GetComponent<Player>().GetCurrentTile())
                 {
+                    Debug.Log("On position");
                     Player player = _player.gameObject.GetComponent<Player>();
                     int steps = player.GetTileSteps();
                     int scoreToAdd = actionTile.GetScore();

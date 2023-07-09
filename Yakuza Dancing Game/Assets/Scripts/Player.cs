@@ -70,6 +70,11 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    public Tile GetCurrentTile()
+    {
+        return _currentTile;
+    }
+
     public void ClearTileSteps()
     {
         // Hide counters of all stepped tiles
