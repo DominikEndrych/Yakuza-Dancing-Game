@@ -1,7 +1,7 @@
 # Yakuza Disco
 Welcome to my own recreation of beloved minigame from Yakuza 0!
 ## How to play
-If you ever If you ever played disco minigame from Yakuza 0, then this will be very familiar. The gameplay features are limited right now, but all the important stuff is already implemented!
+If you ever played disco minigame from Yakuza 0, then this will be very familiar. The gameplay features are limited right now, but all the important stuff is already implemented!
 ### 1. Song selection
 First, select your song! You can choose from:
 - Friday Night (short song)
